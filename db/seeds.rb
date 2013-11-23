@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Area.create(name: 'Mount HighPlace', description: 'A mountainous area', level: 1)
+Room.create(name: 'Mountain Peak', description: 'The peak of the mountain', area_id: 1)

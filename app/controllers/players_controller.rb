@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    @player = Player.new(player_params.merge(:health => 100, :level => 1))
+    @player = Player.new(player_params.merge(:health => 100, :level => 1, :room_id => 1))
     if @player.save
       redirect_to games_path
     else
