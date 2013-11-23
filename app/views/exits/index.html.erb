@@ -1,0 +1,10 @@
+<h2>Exits</h2>
+
+<div>
+  <h3>Existing Exits</h3>
+  <ul>
+    <% @exits.each do |exit| %>
+    <li><%= exit.name %> : from : <%= exit.room.name %> to : <%= Room.find(exit.leads_to_room_id).name %></li>
+    <% end %>
+  </ul>
+</div>

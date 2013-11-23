@@ -1,0 +1,7 @@
+<%= form_for @exit do |f|%>
+  <p>name: <%= f.text_field :name %></p>
+  <p>description: <%= f.text_area :description %></p>
+  <p>from room: <%= f.select :room_id, Room.all.collect{|r| [r.name, r.id]}%></p>
+  <p>to room: <%= f.select :leads_to_room_id, Room.all.collect{|r| [r.name, r.id]}%></p>
+    <%= submit_tag 'Create' %>
+<% end %>

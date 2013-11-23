@@ -1,0 +1,6 @@
+<%= form_for @area do |f|%>
+  <p>name: <%= f.text_field :name %></p>
+  <p>level: <%= f.text_field :level %></p>
+  <p>description: <%= f.text_area :description %></p>
+   <%= submit_tag 'Create' %>
+<% end %>

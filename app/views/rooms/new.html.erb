@@ -1,0 +1,7 @@
+<%= form_for @room do |f|%>
+  <p>name: <%= f.text_field :name %></p>
+  <!--<p>level: <= f.text_field :level %></p>-->
+  <p>description: <%= f.text_area :description %></p>
+  <p>Area: <%= f.select :area_id, Area.all.collect{|a| [a.name,a.id]}%></p>
+   <%= submit_tag 'Create' %>
+<% end %>

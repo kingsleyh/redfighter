@@ -1,0 +1,10 @@
+<h2>Rooms</h2>
+
+<div>
+  <h3>Existing Rooms</h3>
+  <ul>
+    <% @rooms.each do |room| %>
+    <li><%= room.name %> : <%= room.description %></li>
+    <% end %>
+  </ul>
+</div>

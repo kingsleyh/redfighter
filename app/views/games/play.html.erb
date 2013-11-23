@@ -1,0 +1,87 @@
+<h2>Play</h2>
+
+<table border="1" width="100%">
+  <tr>
+    <td valign="top">
+      <ul>Areas
+        <% @areas.each do |area| %>
+            <li><%= area.name %> : Level <%= area.level %></li>
+        <% end %>
+      </ul>
+    </td>
+    <td valign="top">
+      <p>Current Area: <%= @player.room.area.name %> : Level <%= @player.room.area.level %></p>
+
+      <p>Current Room: <%= @player.room.name %></p>
+
+      <p>
+      <ul>Exits:
+        <% @player.room.exits.each do |exit| %>
+            <li><%= exit.name %></li>
+        <% end %>
+      </ul>
+      </p>
+
+      <p>
+        <%= @player.room.description %>
+      </p>
+
+      <table border="1" width="100%">
+        <tr>
+          <td>
+            <ul>NPCs
+              <% @player.room.players.each do |player| %>
+                  <li><%= player.name %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td>
+            <ul>Players
+              <% @player.room.players.each do |player| %>
+                  <li><%= player.name %></li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+    <td valign="top">
+      <h3><%= @player.name %></h3>
+
+      <p>Health: <%= @player.health %></p>
+
+      <p>Level: <%= @player.level %></p>
+      <table width="100%" border="1">
+        <tr>
+          <td>
+            <ul>Attacks
+              <% @player.attacks.each do |attack| %>
+                  <li><%= attack.name %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td>
+            <ul>Shields
+              <% @player.shields.each do |shield| %>
+                  <li><%= shield.name %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td>
+            <ul>Spells
+              <% @player.spells.each do |spell| %>
+                  <li><%= spell.name %></li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+      </table>
+      <ul>Strategies
+        <% @player.spells.each do |spell| %>
+            <li><%= spell.name %></li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+</table>

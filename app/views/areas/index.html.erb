@@ -1,0 +1,10 @@
+<h2>Areas</h2>
+
+<div>
+  <h3>Existing Areas</h3>
+  <ul>
+    <% @areas.each do |area| %>
+    <li><%= area.name %> : Level <%= area.level %></li>
+    <% end %>
+  </ul>
+</div>
