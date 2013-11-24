@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   end
 
   def play
-    @player = Player.first
+    @player = Player.find(params[:id])
     @areas = Area.all
 
   end
