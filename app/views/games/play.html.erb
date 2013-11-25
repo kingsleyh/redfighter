@@ -1,6 +1,7 @@
 <script>
     $(function () {
         var faye = new Faye.Client('http://localhost:9292/faye');
+
         faye.subscribe('/player/<%= @player.id %>', function (data) {
             if (data.attr == 'level') {
                 $('#player_level').text(data.data);
@@ -11,11 +12,6 @@
             if (data.attr == 'player_info') {
                 $('#player_info').html(data.data);
             }
-            if (data.attr == 'room_info') {
-                $('#room_info').html(data.data);
-            }
-
-
         });
     });
 
@@ -33,9 +29,7 @@
       </ul>
     </td>
     <td valign="top">
-      <div id="room_info">
-        <%= render :partial => 'games/room_info', :locals => {:player => @player} %>
-      </div>
+      <%= render :partial => 'games/room_info', :locals => {:player => @player} %>
     </td>
     <td valign="top">
 
