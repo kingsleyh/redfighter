@@ -1,3 +1,26 @@
+<script>
+    $(function () {
+        var faye = new Faye.Client('http://localhost:9292/faye');
+        faye.subscribe('/player/<%= @player.id %>', function (data) {
+            if (data.attr == 'level') {
+                $('#player_level').text(data.data);
+            }
+            if (data.attr == 'health') {
+                $('#player_health').text(data.data);
+            }
+            if (data.attr == 'player_info') {
+                $('#player_info').html(data.data);
+            }
+            if (data.attr == 'room_info') {
+                $('#room_info').html(data.data);
+            }
+
+
+        });
+    });
+
+</script>
+
 <h2>Play</h2>
 
 <table border="1" width="100%">
@@ -10,78 +33,28 @@
       </ul>
     </td>
     <td valign="top">
-      <p>Current Area: <%= @player.room.area.name %> : Level <%= @player.room.area.level %></p>
-
-      <p>Current Room: <%= @player.room.name %></p>
-
-      <p>
-      <ul>Exits:
-        <% @player.room.exits.each do |exit| %>
-            <li><%= exit.name %></li>
-        <% end %>
-      </ul>
-      </p>
-
-      <p>
-        <%= @player.room.description %>
-      </p>
-
-      <table border="1" width="100%">
-        <tr>
-          <td>
-            <ul>NPCs
-              <% @player.room.players.each do |player| %>
-                  <li><%= player.name %></li>
-              <% end %>
-            </ul>
-          </td>
-          <td>
-            <ul>Players
-              <% @player.room.players.each do |player| %>
-                  <li><%= player.name %></li>
-              <% end %>
-            </ul>
-          </td>
-        </tr>
-      </table>
-
+      <div id="room_info">
+        <%= render :partial => 'games/room_info', :locals => {:player => @player} %>
+      </div>
     </td>
     <td valign="top">
+
       <h3><%= @player.name %></h3>
 
-      <p>Health: <%= @player.health %></p>
+      <p>Health: <span id="player_health"><%= @player.health %></span></p>
 
       <p>Level: <span id="player_level"><%= @player.level %></span></p>
-      <table width="100%" border="1">
-        <tr>
-          <td>
-            <ul>Attacks
-              <% @player.attacks.each do |attack| %>
-                  <li><%= attack.name %></li>
-              <% end %>
-            </ul>
-          </td>
-          <td>
-            <ul>Shields
-              <% @player.shields.each do |shield| %>
-                  <li><%= shield.name %></li>
-              <% end %>
-            </ul>
-          </td>
-          <td>
-            <ul>Spells
-              <% @player.spells.each do |spell| %>
-                  <li><%= spell.name %></li>
-              <% end %>
-            </ul>
-          </td>
-        </tr>
-      </table>
+
+      <div id="player_info">
+        <%= render :partial => 'games/player_info', :locals => {:player => @player} %>
+      </div>
+
       <ul>Strategies
         <% @player.spells.each do |spell| %>
             <li><%= spell.name %></li>
         <% end %>
       </ul>
+
     </td>
   </tr>
 </table>

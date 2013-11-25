@@ -1,0 +1,34 @@
+<p>Current Area: <%= player.room.area.name %> : Level <%= player.room.area.level %></p>
+
+ <p>Current Room: <%= player.room.name %></p>
+
+ <p>
+ <ul>Exits:
+   <% player.room.exits.each do |exit| %>
+       <li><%= exit.name %></li>
+   <% end %>
+ </ul>
+ </p>
+
+ <p>
+   <%= player.room.description %>
+ </p>
+
+ <table border="1" width="100%">
+   <tr>
+     <td>
+       <ul>NPCs
+         <% player.room.players.each do |player| %>
+             <li><%= player.name %></li>
+         <% end %>
+       </ul>
+     </td>
+     <td>
+       <ul>Players
+         <% player.room.players.each do |player| %>
+             <li><%= player.name %></li>
+         <% end %>
+       </ul>
+     </td>
+   </tr>
+ </table>

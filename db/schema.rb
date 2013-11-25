@@ -23,11 +23,13 @@ ActiveRecord::Schema.define(version: 20131122192128) do
 
   create_table "attacks", force: true do |t|
     t.integer  "player_id"
+    t.string   "name"
     t.integer  "strength"
     t.integer  "level"
     t.text     "description"
     t.text     "category"
     t.integer  "used"
+    t.integer  "uses"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(version: 20131122192128) do
     t.integer  "level"
     t.integer  "group_id"
     t.integer  "room_id"
+    t.integer  "category"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,22 +70,26 @@ ActiveRecord::Schema.define(version: 20131122192128) do
 
   create_table "shields", force: true do |t|
     t.integer  "player_id"
+    t.string   "name"
     t.integer  "strength"
     t.integer  "level"
     t.text     "description"
     t.text     "category"
     t.integer  "used"
+    t.integer  "uses"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "spells", force: true do |t|
+    t.string   "name"
     t.integer  "player_id"
     t.integer  "spell_action_id"
     t.integer  "level"
     t.text     "description"
     t.text     "category"
     t.integer  "used"
+    t.integer  "uses"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

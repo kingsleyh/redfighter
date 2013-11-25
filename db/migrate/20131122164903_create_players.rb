@@ -6,6 +6,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :level
       t.integer :group_id
       t.integer :room_id
+      t.integer :category
       t.timestamps
     end
   end

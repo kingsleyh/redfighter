@@ -1,0 +1,31 @@
+<table width="100%" border="1">
+       <tr>
+         <td>
+           <ul>Attacks
+             <span id="attacks">
+             <% player.attacks.each do |attack| %>
+                 <li><%= attack.name %></li>
+             <% end %>
+             </span>
+           </ul>
+         </td>
+         <td>
+           <ul>Shields
+             <span id="shields">
+             <% player.shields.each do |shield| %>
+                 <li><%= shield.name %></li>
+             <% end %>
+             </span>
+           </ul>
+         </td>
+         <td>
+           <ul>Spells
+             <span id="spells">
+             <% player.spells.each do |spell| %>
+                 <li><%= spell.name %></li>
+             <% end %>
+             </span>
+           </ul>
+         </td>
+       </tr>
+     </table>
