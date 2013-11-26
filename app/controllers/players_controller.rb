@@ -13,6 +13,17 @@ class PlayersController < ApplicationController
     end
   end
 
+  def change_room
+    @player = Player.find(params[:id])
+    @player.room_id = params[:room_id]
+    @player.save
+    respond_to do |format|
+      if @player.save
+        format.js {}
+      end
+    end
+  end
+
   def player_params
     params.require(:player).permit(:name)
   end

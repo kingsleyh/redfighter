@@ -24,7 +24,8 @@ class Player < ActiveRecord::Base
   after_update :update_player_info
 
   def update_player_info
-    broadcast("/player/#{id}",{:attr => :player_info, :data => apply('games/_player_info',:player => self)})
+    broadcast("/player/#{id}", {:attr => :player_info, :data => apply('games/_player_info', :player => self)})
+    broadcast("/player/#{id}", {:attr => :current_room, :data => apply('games/_current_room', :player => self)})
     broadcast("/room/#{room_id}",{:attr => :room_info, :data => apply('games/_room_info',:player => self)})
   end
 
