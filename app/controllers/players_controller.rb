@@ -15,7 +15,9 @@ class PlayersController < ApplicationController
 
   def change_room
     @player = Player.find(params[:id])
+    previous = @player.room_id
     @player.room_id = params[:room_id]
+    @player.previous_room_id = previous
     @player.save
     respond_to do |format|
       if @player.save

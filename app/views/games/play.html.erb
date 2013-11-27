@@ -12,18 +12,15 @@
             if (data.attr == 'player_info') {
                 $('#player_info').html(data.data);
             }
-            if (data.attr == 'current_room') {
-                $('#current_room').html(data.data);
+            if (data.attr == 'update_room') {
+                $('#room_info').html(data.data);
             }
+
         });
 
     });
 
 </script>
-
-<div id="current_room">
-  <%= render :partial => 'games/current_room', :locals => {:player => @player} %>
-</div>
 
 <h2>Play</h2>
 

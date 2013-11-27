@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20131122192128) do
     t.integer  "level"
     t.integer  "group_id"
     t.integer  "room_id"
+    t.integer  "previous_room_id"
     t.integer  "category"
     t.datetime "created_at"
     t.datetime "updated_at"

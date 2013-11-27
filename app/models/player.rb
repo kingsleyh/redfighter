@@ -21,12 +21,20 @@ class Player < ActiveRecord::Base
     write_attribute(:health, health)
   end
 
-  after_update :update_player_info
+  after_update :update_player_info, :update_room_info
 
   def update_player_info
     broadcast("/player/#{id}", {:attr => :player_info, :data => apply('games/_player_info', :player => self)})
-    broadcast("/player/#{id}", {:attr => :current_room, :data => apply('games/_current_room', :player => self)})
-    broadcast("/room/#{room_id}",{:attr => :room_info, :data => apply('games/_room_info',:player => self)})
+  end
+
+  def update_room_info
+    Room.all.each do |room|
+      puts "room: #{room.id}"
+      room.players.each do |p|
+        puts "player: #{p.name}"
+        broadcast("/player/#{p.id}", {:attr => :update_room, :data => apply('games/_room_info', :player => p)})
+      end
+    end
   end
 
 end
