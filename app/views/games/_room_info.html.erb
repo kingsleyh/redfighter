@@ -1,6 +1,7 @@
 <p>Current Area: <%= player.room.area.name %> : Level <%= player.room.area.level %></p>
 
 <p>Current Room: <%= player.room.name %></p>
+<p>Current Player: <%= player.name %></p>
 
 <p>
 <ul>Exits:
@@ -19,15 +20,15 @@
   <tr>
     <td>
       <ul>NPCs
-        <% player.room.players.each do |player| %>
-            <li><%= player.name %></li>
+        <% player.room.players.each do |playr| %>
+            <li><%= playr.name %> <%= link_to 'fight', challenge_path(player.id,playr.id), :remote => :true %></li>
         <% end %>
       </ul>
     </td>
     <td>
       <ul>Players
-        <% player.room.players.each do |player| %>
-            <li><%= player.name %></li>
+        <% player.room.players.each do |playr| %>
+            <li><%= playr.name %></li>
         <% end %>
       </ul>
     </td>

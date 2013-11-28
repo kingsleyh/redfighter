@@ -5,6 +5,7 @@ class Player < ActiveRecord::Base
   has_many :attacks, :after_add => :make_dirty
   has_many :shields, :after_add => :make_dirty
   has_many :spells, :after_add => :make_dirty
+  has_many :strategies
   belongs_to :group
   belongs_to :room
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122192128) do
+ActiveRecord::Schema.define(version: 20131127234539) do
 
   create_table "areas", force: true do |t|
     t.integer  "level"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 20131122192128) do
     t.integer  "room_id"
     t.integer  "leads_to_room_id"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fights", force: true do |t|
+    t.integer  "fighter_1_id"
+    t.integer  "fighter_2_id"
+    t.integer  "winner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -91,6 +99,23 @@ ActiveRecord::Schema.define(version: 20131122192128) do
     t.text     "category"
     t.integer  "used"
     t.integer  "uses"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "strategies", force: true do |t|
+    t.string   "name"
+    t.integer  "player_id"
+    t.integer  "slot_1"
+    t.integer  "slot_2"
+    t.integer  "slot_3"
+    t.integer  "slot_4"
+    t.integer  "slot_5"
+    t.integer  "slot_6"
+    t.integer  "slot_7"
+    t.integer  "slot_8"
+    t.integer  "slot_9"
+    t.integer  "slot_10"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
