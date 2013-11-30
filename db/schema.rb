@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20131129234431) do
     t.integer  "fighter_1_id"
     t.integer  "fighter_2_id"
     t.integer  "winner_id"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,6 +4,7 @@ class CreateFights < ActiveRecord::Migration
       t.integer :fighter_1_id
       t.integer :fighter_2_id
       t.integer :winner_id
+      t.string  :status
       t.timestamps
     end
   end

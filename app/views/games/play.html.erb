@@ -12,6 +12,9 @@
             if (data.attr == 'player_info') {
                 $('#player_info').html(data.data);
             }
+            if (data.attr == 'strategy_info') {
+                $('#strategies').html(data.data);
+            }
             if (data.attr == 'update_room') {
                 $('#room_info').html(data.data);
             }
@@ -47,83 +50,17 @@
       <p>Level: <span id="player_level"><%= @player.level %></span></p>
 
       <div id="fights">
-         <%= render :partial => 'fights', :locals => {:player => @player}%>
+        <%= render :partial => 'fights', :locals => {:player => @player} %>
       </div>
 
       <div id="player_info">
         <%= render :partial => 'games/player_info', :locals => {:player => @player} %>
       </div>
 
-      <ul>Strategies
-        <%= form_for @strategy, :remote => true do |f| %>
-            <table>
-              <tr>
-                <th>name</th>
-                <td><%= f.text_field :name %></td>
-              </tr>
-              <tr>
-                <th>slot 1</th>
-                <td><%= f.select :slot_1, @player.attacks.collect { |a| [a.name, a.id] } %></td>
-              </tr>
+      <div id="strategies">
+        <%= render :partial => 'strategies', :locals => {:player => @player} %>
+      </div>
 
-              <tr>
-                <th>slot 2</th>
-                <td><%= f.select :slot_2, @player.attacks.collect { |a| [a.name, a.id] } %></td>
-              </tr>
-
-              <tr>
-                <th>slot 3</th>
-                <td><%= f.select :slot_3, @player.attacks.collect { |a| [a.name, a.id] } %></td>
-              </tr>
-
-              <tr>
-                <th>slot 4</th>
-                <td><%= f.select :slot_4, @player.attacks.collect { |a| [a.name, a.id] } %></td>
-              </tr>
-
-              <tr>
-                <th>slot 5</th>
-                <td><%= f.select :slot_5, @player.attacks.collect { |a| [a.name, a.id] } %></td>
-              </tr>
-
-              <tr>
-                <th>slot 6</th>
-                <td><%= f.select :slot_6, @player.attacks.collect { |a| [a.name, a.id] } %></td>
-              </tr>
-
-              <tr>
-                <th>slot 7</th>
-                <td><%= f.select :slot_7, @player.attacks.collect { |a| [a.name, a.id] } %></td>
-              </tr>
-
-              <tr>
-                <th>slot 8</th>
-                <td><%= f.select :slot_8, @player.attacks.collect { |a| [a.name, a.id] } %></td>
-              </tr>
-
-              <tr>
-                <th>slot 9</th>
-                <td><%= f.select :slot_9, @player.attacks.collect { |a| [a.name, a.id] } %></td>
-              </tr>
-
-              <tr>
-                <th>slot 10</th>
-                <td><%= f.select :slot_10, @player.attacks.collect { |a| [a.name, a.id] } %></td>
-              </tr>
-              <%= f.hidden_field :player_id, :value => @player.id %>
-              <tr>
-                <td><%= submit_tag 'Create' %></td>
-                <td></td>
-              </tr>
-
-            </table>
-        <% end %>
-        <p>Existing</p>
-
-        <div id="strategies">
-          <%= render :partial => 'strategies', :locals => {:player => @player} %>
-        </div>
-      </ul>
 
     </td>
   </tr>

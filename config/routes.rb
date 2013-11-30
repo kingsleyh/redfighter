@@ -13,7 +13,7 @@ Redfighter::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   get 'games/play/:id' => 'games#play', as: :play
-  get 'fights/challenge/f1/:f1_id/f2/:f2_id' => 'fights#challenge', as: :challenge
+  post 'fights/challenge' => 'fights#challenge', as: :challenge
   get 'players/change_room/:room_id/player/:id' => 'players#change_room', as: :change_room
 
   # Example resource route (maps HTTP verbs to controller actions automatically):

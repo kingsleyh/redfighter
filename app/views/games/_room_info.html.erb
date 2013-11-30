@@ -6,7 +6,7 @@
 <p>
 <ul>Exits:
   <% player.room.exits.each do |exit| %>
-      <li><%= link_to exit.name, change_room_path(exit.leads_to_room_id,player.id), :remote => :true %></li>
+      <li><%= link_to exit.name, change_room_path(exit.leads_to_room_id, player.id), :remote => :true %></li>
   <% end %>
 </ul>
 </p>
@@ -21,7 +21,14 @@
     <td>
       <ul>NPCs
         <% player.room.players.each do |playr| %>
-            <li><%= playr.name %> <%= link_to 'fight', challenge_path(player.id,playr.id), :remote => :true %></li>
+            <li><%= playr.name %>
+              <form action="<%= challenge_path %>" method="post" data-remote="true">
+                  <%= select_tag('challenge_strategy', options_for_select(playr.strategies.collect{|s| [s.name,s.id]})) %>
+                  <%= hidden_field_tag(:challenge_f1, player.id)%>
+                  <%= hidden_field_tag(:challenge_f2, playr.id)%>
+                  <%= submit_tag('fight')%>
+              </form>
+            </li>
         <% end %>
       </ul>
     </td>
