@@ -2,12 +2,13 @@ class Player < ActiveRecord::Base
 
   include DirtyAssociations
 
-  has_many :attacks, :after_add => :make_dirty
-  has_many :shields, :after_add => :make_dirty
-  has_many :spells, :after_add => :make_dirty
+  has_and_belongs_to_many :attacks, :after_add => :make_dirty
+  has_and_belongs_to_many :shields, :after_add => :make_dirty
+  has_and_belongs_to_many :spells, :after_add => :make_dirty
   has_many :strategies
   belongs_to :group
   belongs_to :room
+  belongs_to :user
 
   include Broadcast
   include Templator

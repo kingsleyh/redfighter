@@ -8,6 +8,11 @@ gem 'sqlite3'
 
 gem 'faye'
 gem 'thin'
+gem 'rappa'
+gem 'rubyzip', '< 1.0.0'
+
+gem 'devise', '3.0.0.rc'
+gem 'hirb'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

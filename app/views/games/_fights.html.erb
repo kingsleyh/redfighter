@@ -1,5 +1,0 @@
-<ul>
-  <% player.fights.each do |fight|%>
-    <li><%= Player.find(fight.fighter_1_id).name %> versus <%= Player.find(fight.fighter_2_id).name %></li>
-  <% end %>
-</ul>

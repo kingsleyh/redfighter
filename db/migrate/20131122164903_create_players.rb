@@ -8,6 +8,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :room_id
       t.integer :previous_room_id
       t.integer :category
+      t.integer :user_id
       t.timestamps
     end
   end

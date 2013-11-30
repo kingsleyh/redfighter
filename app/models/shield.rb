@@ -1,5 +1,5 @@
 class Shield < ActiveRecord::Base
 
-  belongs_to :player
+  has_and_belongs_to_many :players
 
 end

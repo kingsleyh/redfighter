@@ -1,5 +1,7 @@
 class AreasController < ApplicationController
 
+  before_filter :authenticate_user!
+
   def index
     @areas = Area.all
   end

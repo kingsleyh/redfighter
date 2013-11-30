@@ -10,7 +10,7 @@
 <div>Your Players
   <ul>
     <% @players.each do |player| %>
-        <li><span><%= player.name %></span></li>
+        <li><span><%= player.name %> <%= link_to 'play', play_path(player.id)%></span></li>
     <% end %>
   </ul>
 
