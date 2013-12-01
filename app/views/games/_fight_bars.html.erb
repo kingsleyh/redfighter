@@ -1,0 +1,46 @@
+<ul>Fight Bars
+      <form action="<%= fightbars_path %>" method="post" data-remote="true">
+      <table>
+       <tr>
+          <th>name</th>
+          <td><%= text_field_tag 'fightbar[name]' %></td>
+        </tr>
+        <tr>
+          <th>slot 1</th>
+          <td><%= select_tag 'fightbar[slot_1]',options_for_select(player.attacks.collect { |a| [a.name, a.id] }) %></td>
+        </tr>
+
+        <tr>
+          <th>slot 2</th>
+          <td><%= select_tag 'fightbar[slot_2]',options_for_select(player.attacks.collect { |a| [a.name, a.id] }) %></td>
+        </tr>
+
+        <tr>
+          <th>slot 3</th>
+          <td><%= select_tag 'fightbar[slot_3]',options_for_select(player.attacks.collect { |a| [a.name, a.id] }) %></td>
+        </tr>
+
+        <tr>
+          <th>slot 4</th>
+          <td><%= select_tag 'fightbar[slot_4]',options_for_select(player.attacks.collect { |a| [a.name, a.id] }) %></td>
+        </tr>
+
+        <tr>
+          <th>slot 5</th>
+          <td><%= select_tag 'fightbar[slot_5]',options_for_select(player.attacks.collect { |a| [a.name, a.id] }) %></td>
+        </tr>
+
+        <%= hidden_field_tag :id_player, player.id %>
+        <tr>
+          <td><%= submit_tag 'Create' %></td>
+          <td></td>
+        </tr>
+
+      </table>
+ </form>
+  <p>Existing</p>
+
+  <% player.fight_items.each do |fightbar| %>
+      <li><%= fightbar.name %></li>
+  <% end %>
+</ul>

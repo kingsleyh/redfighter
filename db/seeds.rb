@@ -11,8 +11,9 @@ Room.create(name: 'Mountain Peak', description: 'The peak of the mountain', area
 Room.create(name: 'Mountain Base', description: 'The base of the mountain', area_id: 1)
 Exit.create(name: 'Down', room_id: 1, leads_to_room_id: 2)
 Exit.create(name: 'Up', room_id: 2, leads_to_room_id: 1)
-fireball = Attack.create(name: 'Fireball', description: 'A fiery ball', strength: 100, level: 1)
+fireball = FightItem.create(name: 'Fireball', description: 'A fiery ball', strength: 100, level: 1, kind: 'attack')
 u = User.create(email: 'xorte@supermail.com', password: 'supermail', password_confirmation: 'supermail')
 p1 = Player.create(name: 'Xorte', level: 1, room_id: 1, health: 100, category: 'player')
-p1.attacks << fireball
+p1.fight_items << fireball
+p1.fight_bars << FightBar.create(name: 'bar1', slot_1: 1, slot_2: 1, slot_3: 1, slot_4: 1, slot_5: 1, active: true)
 u.players << p1

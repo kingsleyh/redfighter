@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ShieldTest < ActiveSupport::TestCase
+class FightbarsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

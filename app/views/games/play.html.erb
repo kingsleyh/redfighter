@@ -12,8 +12,8 @@
             if (data.attr == 'player_info') {
                 $('#player_info').html(data.data);
             }
-            if (data.attr == 'strategy_info') {
-                $('#strategies').html(data.data);
+            if (data.attr == 'fight_bar_info') {
+                $('#fightbars').html(data.data);
             }
             if (data.attr == 'update_room') {
                 $('#room_info').html(data.data);
@@ -49,16 +49,12 @@
 
       <p>Level: <span id="player_level"><%= @player.level %></span></p>
 
-      <div id="fights">
-        <%= render :partial => 'fights', :locals => {:player => @player} %>
-      </div>
-
       <div id="player_info">
         <%= render :partial => 'games/player_info', :locals => {:player => @player} %>
       </div>
 
       <div id="strategies">
-        <%= render :partial => 'strategies', :locals => {:player => @player} %>
+        <%= render :partial => 'fight_bars', :locals => {:player => @player} %>
       </div>
 
 

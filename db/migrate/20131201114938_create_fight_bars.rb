@@ -1,6 +1,6 @@
-class CreateStrategies < ActiveRecord::Migration
+class CreateFightBars < ActiveRecord::Migration
   def change
-    create_table :strategies do |t|
+    create_table :fight_bars do |t|
       t.string :name
       t.integer :player_id
       t.integer :slot_1
@@ -8,11 +8,7 @@ class CreateStrategies < ActiveRecord::Migration
       t.integer :slot_3
       t.integer :slot_4
       t.integer :slot_5
-      t.integer :slot_6
-      t.integer :slot_7
-      t.integer :slot_8
-      t.integer :slot_9
-      t.integer :slot_10
+      t.boolean :active, :default => false
       t.timestamps
     end
   end

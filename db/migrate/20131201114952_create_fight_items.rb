@@ -1,13 +1,14 @@
-class CreateAttacks < ActiveRecord::Migration
+class CreateFightItems < ActiveRecord::Migration
   def change
-    create_table :attacks do |t|
+    create_table :fight_items do |t|
       t.string :name
       t.integer :strength
       t.integer :level
       t.text :description
       t.text :category
-      t.integer :used
-      t.integer :uses
+      t.string :kind
+      t.integer :spell_action_id
+      t.timestamps
       t.timestamps
     end
   end

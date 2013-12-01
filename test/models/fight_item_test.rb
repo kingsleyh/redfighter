@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StrategyTest < ActiveSupport::TestCase
+class FightItemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

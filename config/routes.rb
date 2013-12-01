@@ -17,7 +17,7 @@ Redfighter::Application.routes.draw do
   get 'players/change_room/:room_id/player/:id' => 'players#change_room', as: :change_room
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-     resources :games, :players, :areas, :rooms, :exits, :strategies, :fights
+     resources :games, :players, :areas, :rooms, :exits, :fightbars, :fights
 
   # Example resource route with options:
   #   resources :products do

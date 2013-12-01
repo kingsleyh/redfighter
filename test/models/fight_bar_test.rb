@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AttackTest < ActiveSupport::TestCase
+class FightBarTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

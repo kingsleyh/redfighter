@@ -1,0 +1,2 @@
+module FightbarsHelper
+end

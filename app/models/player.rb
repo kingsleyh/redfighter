@@ -2,16 +2,26 @@ class Player < ActiveRecord::Base
 
   include DirtyAssociations
 
-  has_and_belongs_to_many :attacks, :after_add => :make_dirty
-  has_and_belongs_to_many :shields, :after_add => :make_dirty
-  has_and_belongs_to_many :spells, :after_add => :make_dirty
-  has_many :strategies, :after_add => :make_dirty
+  has_and_belongs_to_many :fight_items, :after_add => :make_dirty
+  has_many :fight_bars, :after_add => :make_dirty
   belongs_to :group
   belongs_to :room
   belongs_to :user
 
   include Broadcast
   include Templator
+
+  def attacks
+    fight_items.where(:kind == 'attack')
+  end
+
+  def shields
+    fight_items.where(:kind == 'shield')
+  end
+
+  def spells
+    fight_items.where(:kind == 'spell')
+  end
 
   def level=(level)
     broadcast("/player/#{id}", {:attr => :level, :data => level})
@@ -23,15 +33,15 @@ class Player < ActiveRecord::Base
     write_attribute(:health, health)
   end
 
-  def active_fights
-    Fight.where("fighter_1_id = ? or fighter_2_id = ? and status = 'active'", id,id)
+  def active_bar
+    fight_bars.map{| bar| bar if bar.active }.compact.first
   end
 
   after_update :update_player_info, :update_room_info
 
   def update_player_info
     broadcast("/player/#{id}", {:attr => :player_info, :data => apply('games/_player_info', :player => self)})
-    broadcast("/player/#{id}", {:attr => :strategy_info, :data => apply('games/_strategies', :player => self)})
+    broadcast("/player/#{id}", {:attr => :fight_bar_info, :data => apply('games/_fight_bars', :player => self)})
   end
 
   def update_room_info

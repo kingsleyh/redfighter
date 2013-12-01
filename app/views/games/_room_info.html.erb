@@ -15,6 +15,32 @@
   <%= player.room.description %>
 </p>
 
+<table border="1">
+  <tr>
+    <th>bar</th>
+    <th>slot1</th>
+    <th>slot2</th>
+    <th>slot3</th>
+    <th>slot4</th>
+    <th>slot5</th>
+    <th>target</th>
+  </tr>
+  <tr>
+    <td>
+      <%= select_tag('active_bar', options_for_select(player.fight_items.collect{|s| [s.name,s.id]})) %>
+    </td>
+    <form action="<%= challenge_path %>" method="post" data-remote="true">
+    <% player.active_bar.slots.each do |slot|%>
+      <td>
+        <%= submit_tag "Edit", :name => "edit[#{slot.id}]" %>
+      </td>
+      <% end %>
+    <td>
+      <%= select_tag('target_player', options_for_select(player.room.players.collect{|s| [s.name,s.id]})) %>
+    </td>
+    </form>
+  </tr>
+</table>
 
 <table border="1" width="100%">
   <tr>
@@ -23,7 +49,7 @@
         <% player.room.players.each do |playr| %>
             <li><%= playr.name %>
               <form action="<%= challenge_path %>" method="post" data-remote="true">
-                  <%= select_tag('challenge_strategy', options_for_select(playr.strategies.collect{|s| [s.name,s.id]})) %>
+                  <%= select_tag('challenge_strategy', options_for_select(playr.fight_items.collect{|s| [s.name,s.id]})) %>
                   <%= hidden_field_tag(:challenge_f1, player.id)%>
                   <%= hidden_field_tag(:challenge_f2, playr.id)%>
                   <%= submit_tag('fight')%>

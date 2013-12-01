@@ -10,7 +10,6 @@ class GamesController < ApplicationController
     @player = Player.where(:id => params[:id]).first
     redirect_to games_path if @player.nil? or @player.user != current_user
     @areas = Area.all
-    @strategy = Strategy.new
   end
 
 end
