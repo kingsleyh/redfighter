@@ -27,7 +27,7 @@
   </tr>
   <tr>
     <td>
-      <%= select_tag('active_bar', options_for_select(player.fight_items.collect{|s| [s.name,s.id]})) %>
+      <%= select_tag('active_bar', options_for_select(player.fight_bars.collect{|s| [s.name,s.id]})) %>
     </td>
     <form action="<%= challenge_path %>" method="post" data-remote="true">
     <% player.active_bar.slots.each do |slot|%>
